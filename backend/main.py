@@ -1,3 +1,4 @@
+import os
 from fastapi import FastAPI, Depends
 from pydantic import BaseModel
 from model import predict
@@ -48,3 +49,11 @@ def predict_review(req: textrequest, db: Session = Depends(get_db)):
     db.refresh(review)
     
     return result
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(
+        "main:app",
+        host="0.0.0.0",
+        port=int(os.environ.get("PORT", 8000))
+    )
