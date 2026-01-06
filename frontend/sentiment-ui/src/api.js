@@ -1,7 +1,9 @@
 
+const api_url = "https://movie-review-analyzer-1-ux8v.onrender.com"
+
 export async function analyzeSentiment(text) {
     // this line means send a request to .... Fastapi /predict endpoint
-  const response = await fetch("http://127.0.0.1:8000/predict", {
+  const response = await fetch(`${api_url}/predict`, {
     // we are sending data so method POST
     method: "POST",
     headers: {
